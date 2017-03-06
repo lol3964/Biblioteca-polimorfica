@@ -1,3 +1,5 @@
+package Biblioteca;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,7 +13,7 @@ public class Dvd extends Publicacion{
     private int ncanciones;
     private String discografia;
 
-    public Dvd(int ncanciones, String discografia, String nombre, Autor autor) {
+    public Dvd(String nombre, Autor autor, int ncanciones, String discografia) {
         super(nombre, autor);
         this.ncanciones = ncanciones;
         this.discografia = discografia;
@@ -33,5 +35,16 @@ public class Dvd extends Publicacion{
         this.discografia = discografia;
     }
     
-    
+    @Override
+    public void prestar(Socio socio) {
+        super.setPrestado(true);
+        super.ListaPrestados.add(socio);
+        System.out.println("El período de devolución para un disco son: 2 semanas");
+    }
+
+    @Override
+    public void devolver() {
+        super.setPrestado(false);
+        System.out.println("El disco ha sido devuelto correctamente");
+    }
 }

@@ -1,8 +1,11 @@
+package Biblioteca;
+
 public class Libro extends Publicacion {
+
     private long npaginas;
     private String editorial;
 
-    public Libro(long npaginas, String editorial, String nombre, Autor autor) {
+    public Libro(String nombre, Autor autor, long npaginas, String editorial) {
         super(nombre, autor);
         this.npaginas = npaginas;
         this.editorial = editorial;
@@ -24,5 +27,17 @@ public class Libro extends Publicacion {
         this.editorial = editorial;
     }
 
+    @Override
+    public void prestar(Socio socio) {
+        super.setPrestado(true);
+        super.ListaPrestados.add(socio);
+        System.out.println("El período de devolución para un libro son: 2 meses");
+    }
+
+    @Override
+    public void devolver() {
+        super.setPrestado(false);
+        System.out.println("El libro ha sido devuelto correctamente");
+    }
 
 }

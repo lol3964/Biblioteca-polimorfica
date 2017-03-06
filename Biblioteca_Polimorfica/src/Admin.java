@@ -1,5 +1,6 @@
+package Biblioteca;
+
 public class Admin extends Usuario {
-    private Biblioteca biblioteca;
     
     public Admin(String nombre, String apellidos, String dni) {
         super(nombre, apellidos, dni);
