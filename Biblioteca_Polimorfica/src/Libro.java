@@ -39,5 +39,10 @@ public class Libro extends Publicacion {
         super.setPrestado(false);
         System.out.println("El libro ha sido devuelto correctamente");
     }
-
+    
+    @Override
+    public String datosBibli(){
+        return "Este libro pertenece a la biblioteca Watchmen";
+    }
 }
+

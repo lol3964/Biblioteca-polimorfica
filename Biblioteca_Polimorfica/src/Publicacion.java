@@ -11,7 +11,7 @@ import java.util.LinkedList;
  *
  * @author Usuario
  */
-public abstract class Publicacion {
+public abstract class Publicacion implements datosBiblioteca{
 
     private String nombre;
     private Autor autor;
@@ -41,7 +41,16 @@ public abstract class Publicacion {
         this.prestado = prestado;
     }
     
+    public Usuario getLastPrestado(){
+		return ListaPrestados.getLast();
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+    
     public abstract void prestar(Socio socio);
     
     public abstract void devolver();
+
 }

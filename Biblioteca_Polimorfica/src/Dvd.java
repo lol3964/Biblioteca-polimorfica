@@ -47,4 +47,8 @@ public class Dvd extends Publicacion{
         super.setPrestado(false);
         System.out.println("El disco ha sido devuelto correctamente");
     }
+    @Override
+    public String datosBibli(){
+        return "Este DVD pertenece a la biblioteca Watchmen";
+    }
 }

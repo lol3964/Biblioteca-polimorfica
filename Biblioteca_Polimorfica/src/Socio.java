@@ -35,4 +35,12 @@ public class Socio extends Usuario {
         this.edad = edad;
     }
 
+    @Override
+    public String toString() {
+        return "Privilegios: Socio" 
+                + "\nNick: " + nick 
+                + "\nEdad:" + edad
+                + "\n" + super.toString();
+    }
+
 }
