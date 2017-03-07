@@ -1,19 +1,23 @@
+package Biblioteca;
+
 
 
 /**
  *
  * @author Usuario
  */
-public class Usuario {
+public abstract class Usuario implements datosBiblioteca {
     private String nombre;
     private String apellidos;
     private String dni;
-    private static long ID = 0;
+    private long id;
+    private static long ID = 1;
 
     public Usuario(String nombre, String apellidos, String dni) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
+        this.id = ID;
         Usuario.ID++;
     }
 
@@ -41,11 +45,20 @@ public class Usuario {
         this.dni = dni;
     }
 
-    public static long getID() {
-        return ID;
+    public long getID() {
+        return id;
     }
 
-    public static void setID(long ID) {
-        Usuario.ID = ID;
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + 
+                "\nApellidos: " + apellidos + 
+                "\nDNI: " + dni + 
+                "\nID: " + id;
+    }
+    
+    @Override
+    public String datosBibli(){
+        return "Eres usuario de la biblioteca Watchmen";
     }
 }

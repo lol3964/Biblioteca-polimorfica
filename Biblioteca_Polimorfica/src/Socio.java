@@ -1,3 +1,5 @@
+package Biblioteca;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -31,6 +33,14 @@ public class Socio extends Usuario {
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    @Override
+    public String toString() {
+        return "Privilegios: Socio" 
+                + "\nNick: " + nick 
+                + "\nEdad:" + edad
+                + "\n" + super.toString();
     }
 
 }
