@@ -37,9 +37,11 @@ public class Test {
         boolean comprobacion_u = false;
         boolean comprobacion_m = false;
         boolean respuesta;
+        boolean respuesta2;
         boolean comprobacion_p;
 
         do {
+            respuesta2 = false;
             System.out.println("Bienvenido a la Biblioteca."
                     + "\n1)Login"
                     + "\n2)Lista de usuarios"
@@ -86,8 +88,13 @@ public class Test {
                                             for (Usuario u : (LinkedList<Usuario>) ListaUsuario.clone()) {
                                                 if (u.getID() == id) {
                                                     comprobacion_u = true;
-                                                    ListaUsuario.remove(u);
-                                                    System.out.println("Usuario removido correctamente");
+                                                    if (id == s.getID()) {
+                                                        System.out.println("No puedes borrar tu propio usuario");
+                                                    } else {
+                                                        comprobacion_u = true;
+                                                        ListaUsuario.remove(u);
+                                                        System.out.println("Usuario removido correctamente");
+                                                    }
                                                 }
                                             }
                                             if (comprobacion_u == false) {
@@ -119,8 +126,7 @@ public class Test {
                                                     fecha_nac = es.leerString("Introduzca la fecha de nacimiento");
                                                     fecha_mue = es.leerString("Introduzca la fecha de fallecimiento");
                                                     ListaAutor.addLast(new Autor(nombre, apellidos, fecha_nac, fecha_mue));
-                                                     ListaAutor.getLast().toString();
-                                                    //ListaPublicacion.addLast(new Dvd(nombre, ListaAutor.getLast(), ncanciones, discografia));
+                                                    ListaPublicacion.addLast(new Dvd(nombre, ListaAutor.getLast(), ncanciones, discografia));
                                                     System.out.println("Autor y DVD añadidos correctamente");
                                                 }
                                             } else if (tipo.equalsIgnoreCase("LIBRO")) {
@@ -157,7 +163,6 @@ public class Test {
                                             nombre_publi = es.leerString("Introduzca el nombre de la publicación");
                                             nombre = es.leerString("Introduzca el nombre del autor");
                                             apellidos = es.leerString("Introduzca los apellidos del autor");
-                                            comprobacion = false;
                                             if (tipo.equalsIgnoreCase("DVD")) {
                                                 for (Publicacion p : (LinkedList<Publicacion>) ListaPublicacion.clone()) {
                                                     if (p instanceof Dvd) {
@@ -166,6 +171,7 @@ public class Test {
                                                                 && p.getNombre().equalsIgnoreCase(nombre_publi)) {
                                                             comprobacion_u = true;
                                                             ListaPublicacion.remove(p);
+                                                            System.out.println("Publicación eliminada correctamente");
                                                         }
                                                     }
                                                 }
@@ -190,8 +196,9 @@ public class Test {
                                         case 5:
                                             break;
                                     }
-                                    respuesta = es.leerRespuesta("¿Desea salir al menú anterior? (S/N)");
-                                } while (respuesta != true);
+                                    respuesta2 = es.leerRespuesta("¿Desea salir al menú anterior? (S/N)");
+                                } while (respuesta2 != true);
+                                break;
                             } else {
                                 System.out.println("Bienvenido Socio " + s.getNombre()
                                         + "\n1)Préstamo de una publicación"
@@ -342,7 +349,11 @@ public class Test {
                 case 5:
                     System.exit(0);
             }
-            respuesta = es.leerRespuesta("¿Desea salir del programa? (S/N)");
+            if (respuesta2 == true) {
+                respuesta = false;
+            } else {
+                respuesta = es.leerRespuesta("¿Desea salir del programa? (S/N)");
+            }
         } while (respuesta != true);
     }
 
