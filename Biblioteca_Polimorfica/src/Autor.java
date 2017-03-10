@@ -10,33 +10,35 @@ package Biblioteca;
  * @author Usuario
  */
 public class Autor {
-    private long fecha_nac;
-    private long fecha_mue;
+    private String fecha_nac;
+    private String fecha_mue;
     private String nombre;
     private String apellidos;
 
-    public Autor(String nombre, String apellidos, long fecha_nac, long fecha_mue) {
+    public Autor(String nombre, String apellidos, String fecha_nac, String fecha_mue) {
         this.nombre = nombre;
         this.apellidos = apellidos;
     	this.fecha_nac = fecha_nac;
         this.fecha_mue = fecha_mue;
     }
 
-    public long getFecha_nac() {
+    public String getFecha_nac() {
         return fecha_nac;
     }
 
-    public void setFecha_nac(long fecha_nac) {
+    public void setFecha_nac(String fecha_nac) {
         this.fecha_nac = fecha_nac;
     }
 
-    public long getFecha_mue() {
+    public String getFecha_mue() {
         return fecha_mue;
     }
 
-    public void setFecha_mue(long fecha_mue) {
+    public void setFecha_mue(String fecha_mue) {
         this.fecha_mue = fecha_mue;
     }
+
+
     
     public String getNombre() {
         return nombre;

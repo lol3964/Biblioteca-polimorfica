@@ -20,8 +20,8 @@ public class Test {
         ListaUsuario.addLast(admin);
 
         long id;
-        long fecha_nac;
-        long fecha_mue;
+        String fecha_nac;
+        String fecha_mue;
         long npaginas;
         int edad;
         int ncanciones;
@@ -36,6 +36,7 @@ public class Test {
         String discografia;
         boolean comprobacion;
         boolean comprobacion_u = false;
+        boolean comprobacion_m = false;
         boolean respuesta;
         boolean comprobacion_p;
 
@@ -50,7 +51,7 @@ public class Test {
                     id = es.leeEnteroLargoMin(0, "Introduzca el id del usuario");
                     for (Usuario s : (LinkedList<Usuario>) ListaUsuario.clone()) {
                         if (s.getID() == id) {
-                            comprobacion_u = true;
+                            comprobacion_m = true;
                             if (s instanceof Admin) {
                                 do {
                                     System.out.println("Bienvenido Administrador " + s.getNombre()
@@ -95,7 +96,7 @@ public class Test {
 
                                         case 3:
                                             do {
-                                                tipo = es.leerString("¿DVD o libro");
+                                                tipo = es.leerString("¿DVD o libro?");
                                                 if (tipo.equalsIgnoreCase("DVD")) {
                                                     nombre_publi = es.leerString("Introduzca el nombre del DVD");
                                                     ncanciones = (int) es.leeEnteroLargoMin(0, "Introduzca el número de canciones");
@@ -113,8 +114,8 @@ public class Test {
                                                     }
                                                     if (comprobacion_u == false) {
                                                         System.out.println("El autor no está registrado. Se va a registrar al autor.");
-                                                        fecha_nac = es.leeEnteroLargoMinMax(0, 2017, "Introduzca la fecha de nacimiento");
-                                                        fecha_mue = es.leeEnteroLargoMinMax(0, 2017, "Introduzca la fecha de fallecimiento");
+                                                        fecha_nac = es.leerString("Introduzca la fecha de nacimiento");
+                                                        fecha_mue = es.leerString("Introduzca la fecha de fallecimiento");
                                                         ListaAutor.addLast(new Autor(nombre, apellidos, fecha_nac, fecha_mue));
                                                         ListaPublicacion.addLast(new Dvd(nombre, ListaAutor.getLast(), ncanciones, discografia));
                                                         System.out.println("Autor y DVD añadidos correctamente");
@@ -136,8 +137,8 @@ public class Test {
                                                     }
                                                     if (comprobacion_u == false) {
                                                         System.out.println("El autor no está registrado. Se va a registrar al autor.");
-                                                        fecha_nac = es.leeEnteroLargoMinMax(0, 2017, "Introduzca la fecha de nacimiento");
-                                                        fecha_mue = es.leeEnteroLargoMinMax(0, 2017, "Introduzca la fecha de fallecimiento");
+                                                        fecha_nac = es.leerString("Introduzca la fecha de nacimiento");
+                                                        fecha_mue = es.leerString("Introduzca la fecha de fallecimiento");
                                                         ListaAutor.addLast(new Autor(nombre, apellidos, fecha_nac, fecha_mue));
                                                         ListaPublicacion.addLast(new Libro(nombre, ListaAutor.getLast(), npaginas, editorial));
                                                         System.out.println("Autor y libro añadidos correctamente");
@@ -145,11 +146,11 @@ public class Test {
                                                 } else {
                                                     System.out.println("Respuesta inválida");
                                                 }
-                                            } while (tipo.equalsIgnoreCase("DVD") || tipo.equalsIgnoreCase("LIBRO"));
+                                            } while (!tipo.equalsIgnoreCase("DVD") && !tipo.equalsIgnoreCase("LIBRO"));
                                             break;
                                         case 4:
                                             do {
-                                                tipo = es.leerString("¿DVD o Libro");
+                                                tipo = es.leerString("¿DVD o Libro?");
                                                 nombre_publi = es.leerString("Introduzca el nombre de la publicación");
                                                 nombre = es.leerString("Introduzca el nombre del autor");
                                                 apellidos = es.leerString("Introduzca los apellidos del autor");
@@ -182,12 +183,12 @@ public class Test {
                                                 if (comprobacion_u == false) {
                                                     System.out.println("No existe la publicación a borrar");
                                                 }
-                                            } while (tipo.equalsIgnoreCase("DVD") || tipo.equalsIgnoreCase("LIBRO"));
+                                            } while (!tipo.equalsIgnoreCase("DVD") && !tipo.equalsIgnoreCase("LIBRO"));
                                             break;
                                         case 5:
                                             break;
                                     }
-                                    respuesta = es.leerRespuesta("¿Desea salir? (S/N)");
+                                    respuesta = es.leerRespuesta("¿Desea salir al menú anterior? (S/N)");
                                 } while (respuesta != true);
                             } else {
                                 System.out.println("Bienvenido Socio " + s.getNombre()
@@ -242,7 +243,7 @@ public class Test {
                                             } else if (comprobacion_p == false) {
                                                 System.out.println("La publicación ya está prestada");
                                             }
-                                        } while (tipo.equalsIgnoreCase("DVD") || tipo.equalsIgnoreCase("LIBRO"));
+                                        } while (!tipo.equalsIgnoreCase("DVD") && !tipo.equalsIgnoreCase("LIBRO"));
                                         break;
 
                                     case 2:
@@ -296,23 +297,22 @@ public class Test {
 
                             }
                         } else {
-                            comprobacion_u = false;
+                            comprobacion_m = false;
                         }
                     }
-                    if (comprobacion_u == false) {
+                    if (comprobacion_m == false) {
                         System.out.println("El id del usuario introducido no existe");
                     }
                     break;
 
                 case 2:
-            for (Usuario s : ListaUsuario) {
-                System.out.println(s.toString());
-                System.out.println("-----------------");
+                    for (Usuario s : ListaUsuario) {
+                        System.out.println(s.toString());
+                        System.out.println("-----------------");
+                    }
             }
-            }
-            respuesta = es.leerRespuesta("¿Desea salir? (S/N)");
-        } while (respuesta
-                != true);
+            respuesta = es.leerRespuesta("¿Desea salir del programa? (S/N)");
+        } while (respuesta != true);
     }
 
 }
