@@ -44,5 +44,12 @@ public class Libro extends Publicacion {
     public String datosBibli(){
         return "Este libro pertenece a la biblioteca Watchmen";
     }
+
+    @Override
+    public String toString() {
+        return "Tipo publicación: Libro" +super.toString() + "\nNúmero de páginas: " + npaginas + "\nEditorial: " + editorial;
+    }
+    
+    
 }
 

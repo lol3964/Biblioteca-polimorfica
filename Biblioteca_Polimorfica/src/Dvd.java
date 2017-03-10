@@ -51,4 +51,10 @@ public class Dvd extends Publicacion{
     public String datosBibli(){
         return "Este DVD pertenece a la biblioteca Watchmen";
     }
+    
+        @Override
+    public String toString() {
+        return "Tipo publicación: DVD" +super.toString() + "\nNúmero de canciones: " + ncanciones + "\nDiscografía: " + discografia;
+    }
+    
 }

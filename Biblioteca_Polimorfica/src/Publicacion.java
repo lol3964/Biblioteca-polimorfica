@@ -1,24 +1,18 @@
 package Biblioteca;
 
 import java.util.LinkedList;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Usuario
  */
-public abstract class Publicacion implements datosBiblioteca{
+public abstract class Publicacion implements datosBiblioteca {
 
     private String nombre;
     private Autor autor;
     private boolean prestado;
-    
+
     LinkedList<Usuario> ListaPrestados = new LinkedList();
-    
+
     public Publicacion(String nombre, Autor autor) {
         this.nombre = nombre;
         this.autor = autor;
@@ -40,9 +34,9 @@ public abstract class Publicacion implements datosBiblioteca{
     public void setPrestado(boolean prestado) {
         this.prestado = prestado;
     }
-    
-    public Usuario getLastPrestado(){
-		return ListaPrestados.getLast();
+
+    public Usuario getLastPrestado() {
+        return ListaPrestados.getLast();
     }
 
     public Autor getAutor() {
@@ -50,7 +44,12 @@ public abstract class Publicacion implements datosBiblioteca{
     }
     
     public abstract void prestar(Socio socio);
-    
+
     public abstract void devolver();
+    
+    @Override
+    public String toString() {
+        return "\nNombre: " + nombre + "\nAutor=" + autor + "\nEstado de préstamo: " + prestado;
+    }
 
 }
